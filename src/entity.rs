@@ -40,6 +40,7 @@ pub struct ProgressEntity<S: FreelyMutableState> {
     pub visible: Progress,
     /// The hidden progress associated with the entity.
     pub hidden: HiddenProgress,
+    #[reflect(ignore)]
     _pd: PhantomData<S>,
 }
 
