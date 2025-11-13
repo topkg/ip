@@ -1,6 +1,7 @@
 use std::marker::PhantomData;
 
 use bevy_ecs::prelude::*;
+use bevy_reflect::Reflect;
 use bevy_state::state::FreelyMutableState;
 
 use crate::prelude::*;
@@ -33,7 +34,7 @@ use crate::prelude::*;
 /// ));
 /// # }
 /// ```
-#[derive(Component, Debug, Clone, PartialEq, Eq)]
+#[derive(Component, Debug, Clone, PartialEq, Eq, Reflect)]
 pub struct ProgressEntity<S: FreelyMutableState> {
     /// The visible progress associated with the entity.
     pub visible: Progress,
@@ -79,9 +80,7 @@ pub(crate) fn apply_progress_from_entities<S: FreelyMutableState>(
 ) {
     let sum = q.iter().fold(
         (Progress::default(), HiddenProgress::default()),
-        |sum, pfs| {
-            (sum.0 + pfs.visible, sum.1 + pfs.hidden)
-        },
+        |sum, pfs| (sum.0 + pfs.visible, sum.1 + pfs.hidden),
     );
     tracker.set_sum_entities(sum.0, sum.1);
 }

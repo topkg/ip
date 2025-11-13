@@ -1,3 +1,4 @@
+use bevy_reflect::Reflect;
 use derive_more::derive::{Add, AddAssign, Deref, DerefMut, Sub, SubAssign};
 
 /// Represents the progress that is being tracked.
@@ -9,7 +10,7 @@ use derive_more::derive::{Add, AddAssign, Deref, DerefMut, Sub, SubAssign};
 ///
 /// For your convenience, you can easily convert `bool`s into this type.
 /// You can also convert `Progress` values into floats in the `0.0..=1.0` range.
-#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq, Reflect)]
 #[derive(Add, AddAssign, Sub, SubAssign)]
 pub struct Progress {
     /// The units of work that have been completed.
@@ -51,7 +52,7 @@ impl Progress {
 /// Such progress must be completed in order to advance state (or generally
 /// consider everything to be ready), but is not intended to be shown in UI
 /// progress bars or other user-facing progress indicators.
-#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq, Reflect)]
 #[derive(Add, AddAssign, Sub, SubAssign)]
 #[derive(Deref, DerefMut)]
 pub struct HiddenProgress(pub Progress);
