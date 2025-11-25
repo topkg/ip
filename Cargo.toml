@@ -10,13 +10,13 @@ categories = ["game-engines"]
 description = "Bevy plugin to help implement loading states"
 
 [dependencies]
-bevy_reflect = "0.17.2"
-bevy_asset = { version = "0.17.2", default-features = false, optional = true }
-bevy_ecs = { version = "0.17.2", default-features = false }
-bevy_app = { version = "0.17.2", default-features = false }
-bevy_state = { version = "0.17.2", default-features = false }
-bevy_log = { version = "0.17.2", default-features = false, optional = true }
-bevy_platform = { version = "0.17.2", default-features = false }
+bevy_reflect = "0.17.0"
+bevy_asset = { version = "0.17.0", default-features = false, optional = true }
+bevy_ecs = { version = "0.17.0", default-features = false }
+bevy_app = { version = "0.17.0", default-features = false }
+bevy_state = { version = "0.17.0", default-features = false }
+bevy_log = { version = "0.17.0", default-features = false, optional = true }
+bevy_platform = { version = "0.17.0", default-features = false }
 parking_lot = "0.12.3"
 derive_more = { version = "2.0.1", features = ["full"] }
 crossbeam-channel = { version = "0.5.15", optional = true }
@@ -28,7 +28,7 @@ assets = ["dep:bevy_asset"]
 async = ["dep:crossbeam-channel"]
 
 [dev-dependencies]
-bevy = { version = "0.17.2" }
+bevy = { version = "0.17.0" }
 
 [[example]]
 name = "async"
