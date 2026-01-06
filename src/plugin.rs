@@ -180,7 +180,10 @@ impl<S: FreelyMutableState> Plugin for ProgressPlugin<S> {
             PostUpdate,
             apply_progress_from_entities::<S>
                 .run_if(rc_configured_state::<S>)
-                .run_if(any_with_component::<ProgressEntity<S>>),
+                .run_if(
+                    any_with_component::<ProgressEntity<S>>
+                        .or(any_component_removed::<ProgressEntity<S>>),
+                ),
         );
         for s in self.transitions.map_from_to.keys() {
             if self.autoclear_on_enter {
